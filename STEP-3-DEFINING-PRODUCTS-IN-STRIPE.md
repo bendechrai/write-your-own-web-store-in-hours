@@ -17,3 +17,5 @@ Let's add a couple of items to your Stripe product catalogue. You can choose wha
 > 📷 **_Screenshot of an example product being added to Stripe_**
 >
 > ![image](workshop-assets/readme-images/stripe-product-create.jpg)
+
+[▶️ STEP 4](./STEP-4-RETRIEVE-PRODUCTS.md)

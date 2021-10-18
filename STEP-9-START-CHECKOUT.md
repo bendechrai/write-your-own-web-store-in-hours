@@ -18,7 +18,7 @@ npm install @serverless-jwt/netlify
 
 👉💻👈 Create `/netlify/functions/buy.js`
 
-```
+```javascript
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const { NetlifyJwtVerifier } = require('@serverless-jwt/netlify');
 
@@ -75,7 +75,7 @@ AUTH0_AUDIENCE=http://localhost:8888
 
 👉💻👈 Update the `buy()` method in `/src/pages/home.js`, and also retrieve the `getAccessTokenSilently` method from the useAuth0 hook:
 
-```
+```javascript
     const {isLoading, isAuthenticated, loginWithRedirect, getAccessTokenSilently} = useAuth0();
 
     const buy = async () => {
@@ -105,3 +105,5 @@ AUTH0_AUDIENCE=http://localhost:8888
         })
     }
 ```
+
+[▶️ STEP A](./STEP-A-COMPLETION.md)

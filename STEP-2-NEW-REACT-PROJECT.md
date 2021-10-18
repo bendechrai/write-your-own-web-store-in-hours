@@ -142,3 +142,6 @@ export default App;
 🧪 Make sure `netlify dev` is still running and check out your new web site. Manually add `/success` to the end of the URL to test the second page.
 
 💡 Make this looks much prettier by replacing `/src/App.css` with the file by the same name in `/workshop-assets`.
+
+
+[▶️ STEP 3](./STEP-3-DEFINING-PRODUCTS-IN-STRIPE.md)

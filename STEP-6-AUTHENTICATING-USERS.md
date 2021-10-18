@@ -44,11 +44,11 @@ npm install @auth0/auth0-react
 
 👉💻👈 Edit `src/index.js` to wrap the entire application with the Auth0 Provider, and insert the following `import` directive, and wrap the `<App>` element as shown:
 
-```
+```javascript
 import { Auth0Provider } from '@auth0/auth0-react';
 ```
 
-```
+```javascript
 <Auth0Provider
     domain="YOUR_AUTH0_DOMAIN"
     clientId="YOUR_AUTH0_CLIENT_ID"
@@ -72,11 +72,11 @@ These are not sensitive values, but in an ideal world we'd split these out into 
 
 The Auth0 SDK provides lots of helper functionality. If we wanted to protect a whole page from unauthenticated users, for example, we could use the `withAuthenticationRequired()` higher order component to protect the page component. For example, to protect the homepage, you _could_ write:
 
-```
+```javascript
 export default withAuthenticationRequired(Home);
 ```
 
-But, that's not what we want to do today. Instead, we want to detect the current user in the Home component. There are ac ouple of ways we can do this, but as it would make sense to turn the "Buy Now" button into a component that determines what it should do based on the user's logged in status, we'll use the `useAuth()` hook.
+But, that's not what we want to do today. Instead, we want to detect the current user in the Home component. There are a couple of ways we can do this, but as it would make sense to turn the "Buy Now" button into a component that determines what it should do based on the user's logged in status, we'll use the `useAuth()` hook.
 
 👉💻👈 Edit `/src/pages/home.js` and let's create a new component to contain the Buy Now button. Add the `import` directive and define the new component at the top, and replace the button in the main output with this new component:
 
@@ -96,7 +96,7 @@ const BuyNowButton = ({ product }) => {
 };
 ```
 
-```
+```javascript
 <p className="buynow"><BuyNowButton product={product} /></p>
 ```
 
@@ -146,3 +146,5 @@ export default Layout;
 🧪 Check out your local web store now - the buttons should have updated. They did? Well click it and create an account! When that's done, you'll see the buttons read "Buy Now" again.
 
 💡 Note that the CSS file should style the Logout link very similarly to the menu item already 👍
+
+[▶️ STEP 7](./STEP-7-CONNECTING-AUTH0-TO-STRIPE.md)

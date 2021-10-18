@@ -16,7 +16,7 @@ npm install stripe @stripe/stripe-js dotenv
 
 👉💻👈 Create `/netlify/functions/products.js`
 
-```
+```javascript
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async function(event, context) {
@@ -76,3 +76,5 @@ To get your secret key, head to the [Developer Section](https://dashboard.stripe
 👉💻👈 Restart `netlify dev` in order to load in the environment varliables and register the new function.
 
 🧪 To test that everything's working as expected, head to http://localhost:8888/.netlify/functions/products, and you should see the JSON response and spot some product names and descriptions in there.
+
+[▶️ STEP 5](./STEP-5-DISPLAY-PRODUCTS.md)
