@@ -31,7 +31,7 @@ Let's do that now. Another Action will let us do this quite simply.
 
 Okay - here's the code I used:
 
-```
+```javascript
 exports.onExecutePostLogin = async (event, api) => {
   if(event.user.app_metadata.stripe_customer_id) {
     api.accessToken.setCustomClaim(
@@ -64,7 +64,7 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 
 👉💻👈 Edit `/src/index.js` and add the `audience` attribute to the `Auth0Provider` element:
 
-```
+```javascript
     <Auth0Provider
       domain="YOUR_AUTH0_DOMAIN"
       clientId="YOUR_AUTH0_CLIENT_ID"
@@ -82,3 +82,5 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 > 📷 **_Finding the Stripe Customer ID in the Auth0 Access Token_**
 >
 > ![Finding the Stripe Customer ID in the Auth0 Access Token](workshop-assets/readme-images/test-token-has-stripe-id.jpg)
+
+[▶️ STEP 9](./STEP-9-START-CHECKOUT.md)

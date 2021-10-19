@@ -18,7 +18,7 @@
 
 ## Create an Auth0 Action
 
-Actions are one of the extentibility features of Auth0, that allow you to run your own arbirary JavaScript code when certain events are triggered. We're going to create an Action that will create a new Customer record in your Stripe tenant, and associate it with the current;y logged in user.
+Actions are one of the extensibility features of Auth0, that allow you to run your own arbitrary JavaScript code when certain events are triggered. We're going to create an Action that will create a new Customer record in your Stripe tenant, and associate it with the currently logged in user.
 
 👉💻👈 In the Auth0 Dashboard, head to [Actions > Library](https://manage.auth0.com/#/actions/library) in the left menu. From there, click "Build Custom".
 
@@ -60,7 +60,7 @@ Secondly, and similarly, if something goes wrong and we can't connect to Stripe,
 
 👉💻👈 Replace the empty `onExecutePostLogin` method with this, and click the "Deploy" button.
 
-```
+```javascript
 exports.onExecutePostLogin = async (event, api) => {
 
   const stripe = require('stripe')(event.secrets.STRIPE_SECRET_KEY);
@@ -112,3 +112,5 @@ And if you drill into the new Stripe Customer and the Auth0 User, you'll see the
 > 📷 **_Comparing the Stripe Customer and Auth0 User_**
 >
 > ![Comparing the Stripe Customer and Auth0 User](workshop-assets/readme-images/user-customer-comparison.jpg)
+
+[▶️ STEP 8](./STEP-8-AUGMENTING-THE-ACCESS-TOKENSTARTING-A-STRIPE-CHECKOUT.md)

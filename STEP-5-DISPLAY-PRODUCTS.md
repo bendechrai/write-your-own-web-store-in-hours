@@ -10,7 +10,7 @@ But what's it doing? We're going to instruct the Home Page component to connect 
 
 👉💻👈 Replace the contents of `src/pages/home.js` with:
 
-```
+```javascript
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
@@ -64,3 +64,5 @@ export default Home;
 > 📷 **_Screenshot of an example of what the product listing might look like_**
 >
 > ![An example of what the product listing might look like](workshop-assets/readme-images/webstore-demo-product-list.jpg)
+
+[▶️ STEP 6](./STEP-6-AUTHENTICATING-USERS.md)

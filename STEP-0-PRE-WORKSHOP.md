@@ -40,3 +40,6 @@ This shouldn't take long, and having these accounts ready means the start of the
 - [x] Sign up for a [Netlify account](https://ben.sc/netlify-signup) 👉
 - [x] Check your ✉️ email for a verification link
 - [x] Complete or skip the 🙋 profile personalization questions
+
+
+[▶️ STEP 1](./STEP-1-DEVELOPMENT-ENVIRONMENT.md)
