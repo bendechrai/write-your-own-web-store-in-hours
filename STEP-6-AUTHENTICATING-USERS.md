@@ -45,16 +45,12 @@ npm install @auth0/auth0-react
 👉💻👈 Edit `src/index.js` to wrap the entire application with the Auth0 Provider, and insert the following `import` directive, and wrap the `<App>` element as shown:
 
 ```javascript
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Provider } from "@auth0/auth0-react";
 ```
 
 ```javascript
-<Auth0Provider
-    domain="YOUR_AUTH0_DOMAIN"
-    clientId="YOUR_AUTH0_CLIENT_ID"
-    redirectUri={window.location.origin}
->
-    <App />
+<Auth0Provider domain="YOUR_AUTH0_DOMAIN" clientId="YOUR_AUTH0_CLIENT_ID" redirectUri={window.location.origin}>
+  <App />
 </Auth0Provider>
 ```
 
@@ -97,7 +93,9 @@ const BuyNowButton = ({ product }) => {
 ```
 
 ```javascript
-<p className="buynow"><BuyNowButton product={product} /></p>
+<p className="buynow">
+  <BuyNowButton product={product} />
+</p>
 ```
 
 What we're doing here is to wait until the Auth0 provider has finished loading, at which point we know if there's a logged in user. If the user is logged in, we show the "Buy Now" button, otherwise we show the "Log In To Purchase" button.
@@ -147,4 +145,8 @@ export default Layout;
 
 💡 Note that the CSS file should style the Logout link very similarly to the menu item already 👍
 
-[▶️ STEP 7](./STEP-7-CONNECTING-AUTH0-TO-STRIPE.md)
+---
+
+[▶️ STEP 7: Connecting Auth0 to Stripe](./STEP-7-CONNECTING-AUTH0-TO-STRIPE.md)
+
+_[⎌ Back to step 5: Displaying products in React](./STEP-5-DISPLAY-PRODUCTS.md)_

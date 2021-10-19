@@ -19,43 +19,41 @@ npm install @serverless-jwt/netlify
 👉💻👈 Create `/netlify/functions/buy.js`
 
 ```javascript
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const { NetlifyJwtVerifier } = require('@serverless-jwt/netlify');
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { NetlifyJwtVerifier } = require("@serverless-jwt/netlify");
 
 const verifyJwt = NetlifyJwtVerifier({
   issuer: process.env.AUTH0_ISSUER,
   audience: process.env.AUTH0_AUDIENCE,
 });
 
-exports.handler = verifyJwt(async function(event, context) {
+exports.handler = verifyJwt(async function (event, context) {
+  // Get Stripe Customer ID from Access Token
+  const stripeCustomerId = context.identityContext.claims["http://localhost:8888/stripe_customer_id"];
 
-    // Get Stripe Customer ID from Access Token
-    const stripeCustomerId = context.identityContext.claims['http://localhost:8888/stripe_customer_id'];
+  // Decode the payload
+  const payload = JSON.parse(event.body);
 
-    // Decode the payload
-    const payload = JSON.parse(event.body)
+  // Chreate a new Stripe Checkout Session
+  const session = await stripe.checkout.sessions.create({
+    success_url: "http://localhost:8888/success",
+    cancel_url: "http://localhost:8888/",
+    payment_method_types: ["card"],
+    customer: stripeCustomerId,
+    line_items: [
+      {
+        price: payload.priceId,
+        quantity: 1,
+      },
+    ],
+    mode: "payment",
+  });
 
-    // Chreate a new Stripe Checkout Session
-    const session = await stripe.checkout.sessions.create({
-        success_url: 'http://localhost:8888/success',
-        cancel_url: 'http://localhost:8888/',
-        payment_method_types: ['card'],
-        customer: stripeCustomerId,
-        line_items: [
-            {
-                price: payload.priceId,
-                quantity: 1
-            },
-        ],
-        mode: 'payment',
-    });
-
-    return {
-        statusCode: 200,
-        body: JSON.stringify(session)
-    }
-
-})
+  return {
+    statusCode: 200,
+    body: JSON.stringify(session),
+  };
+});
 ```
 
 👉💻👈 Add the two new environment variables to `/.env`
@@ -76,34 +74,36 @@ AUTH0_AUDIENCE=http://localhost:8888
 👉💻👈 Update the `buy()` method in `/src/pages/home.js`, and also retrieve the `getAccessTokenSilently` method from the useAuth0 hook:
 
 ```javascript
-    const {isLoading, isAuthenticated, loginWithRedirect, getAccessTokenSilently} = useAuth0();
+const { isLoading, isAuthenticated, loginWithRedirect, getAccessTokenSilently } = useAuth0();
 
-    const buy = async () => {
+const buy = async () => {
+  // We need an access token for our API to get the
+  // Stripe Customer ID from
+  const access_token = await getAccessTokenSilently();
 
-        // We need an access token for our API to get the
-        // Stripe Customer ID from
-        const access_token = await getAccessTokenSilently()
-
-        // Call the API endpoint, passing in the access token
-        // as a header, and the Price ID as the payload
-        fetch('/.netlify/functions/buy',
-            {
-                method: 'POST',
-                headers: {
-                    authorization: `Bearer ${access_token}`
-                },
-                body: JSON.stringify({
-                    "priceId": product.prices[0].id
-                })
-            })
-        .then(res => res.json())
-        .then(json => {
-            // The response is a checkout session object,
-            // which has a `url` attribute which we simply
-            // redirect the user to
-            window.location.assign(json.url)
-        })
-    }
+  // Call the API endpoint, passing in the access token
+  // as a header, and the Price ID as the payload
+  fetch("/.netlify/functions/buy", {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${access_token}`,
+    },
+    body: JSON.stringify({
+      priceId: product.prices[0].id,
+    }),
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      // The response is a checkout session object,
+      // which has a `url` attribute which we simply
+      // redirect the user to
+      window.location.assign(json.url);
+    });
+};
 ```
 
-[▶️ STEP A](./STEP-A-COMPLETION.md)
+---
+
+[▶️ STEP A: Complete! Testing the site...](./STEP-A-COMPLETION.md)
+
+_[⎌ Back to step 8: Augmenting Access Tokens](./STEP-8-AUGMENTING-THE-ACCESS-TOKENSTARTING-A-STRIPE-CHECKOUT.md)_

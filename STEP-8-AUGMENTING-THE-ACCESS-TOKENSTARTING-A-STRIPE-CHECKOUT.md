@@ -33,11 +33,8 @@ Okay - here's the code I used:
 
 ```javascript
 exports.onExecutePostLogin = async (event, api) => {
-  if(event.user.app_metadata.stripe_customer_id) {
-    api.accessToken.setCustomClaim(
-      'http://localhost:8888/stripe_customer_id',
-      event.user.app_metadata.stripe_customer_id
-    );
+  if (event.user.app_metadata.stripe_customer_id) {
+    api.accessToken.setCustomClaim("http://localhost:8888/stripe_customer_id", event.user.app_metadata.stripe_customer_id);
   }
 };
 ```
@@ -65,14 +62,9 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 👉💻👈 Edit `/src/index.js` and add the `audience` attribute to the `Auth0Provider` element:
 
 ```javascript
-    <Auth0Provider
-      domain="YOUR_AUTH0_DOMAIN"
-      clientId="YOUR_AUTH0_CLIENT_ID"
-      audience="http://localhost:8888"
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
+<Auth0Provider domain="YOUR_AUTH0_DOMAIN" clientId="YOUR_AUTH0_CLIENT_ID" audience="http://localhost:8888" redirectUri={window.location.origin}>
+  <App />
+</Auth0Provider>
 ```
 
 ![spacer](workshop-assets/readme-images/spacer.png)
@@ -83,4 +75,8 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 >
 > ![Finding the Stripe Customer ID in the Auth0 Access Token](workshop-assets/readme-images/test-token-has-stripe-id.jpg)
 
-[▶️ STEP 9](./STEP-9-START-CHECKOUT.md)
+---
+
+[▶️ STEP 9: Starting a Stripe Checkout](./STEP-9-START-CHECKOUT.md)
+
+_[⎌ Back to step 7: Connecting Auth0 to Stripe](./STEP-7-CONNECTING-AUTH0-TO-STRIPE.md)_

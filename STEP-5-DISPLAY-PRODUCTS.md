@@ -14,45 +14,44 @@ But what's it doing? We're going to instruct the Home Page component to connect 
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
-    const [products, setProducts] = useState();
+  const [products, setProducts] = useState();
 
-    useEffect(() => {
-        fetch('/.netlify/functions/products')
-        .then(res => res.json())
-        .then(json => {
-            setProducts(json)
-        })
-    }, [setProducts]);
+  useEffect(() => {
+    fetch("/.netlify/functions/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setProducts(json);
+      });
+  }, [setProducts]);
 
-    return (
-        <>
-            <h1>Home</h1>
-            <p>Welcome to my web store!</p>
-            <div className="products">
-                { products &&
-                products
-                .filter(product => product.active)
-                .map(product => {
-                    return (
-                        <div className="product" key={product.id}>
-                            <h2>{product.name}</h2>
-                            <p className="img">
-                                <img src={product.images[0]}
-                                     alt={product.name} />
-                            </p>
-                            <p className="sku">SKU: {product.id}</p>
-                            <p className="description">{product.description}</p>
-                            <p className="price">
-                                ${(product.prices[0].unit_amount/100).toFixed(2)}
-                            </p>
-                            <p className="buynow"><button>Buy Now</button></p>
-                        </div>
-                    )
-                })}
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <h1>Home</h1>
+      <p>Welcome to my web store!</p>
+      <div className="products">
+        {products &&
+          products
+            .filter((product) => product.active)
+            .map((product) => {
+              return (
+                <div className="product" key={product.id}>
+                  <h2>{product.name}</h2>
+                  <p className="img">
+                    <img src={product.images[0]} alt={product.name} />
+                  </p>
+                  <p className="sku">SKU: {product.id}</p>
+                  <p className="description">{product.description}</p>
+                  <p className="price">${(product.prices[0].unit_amount / 100).toFixed(2)}</p>
+                  <p className="buynow">
+                    <button>Buy Now</button>
+                  </p>
+                </div>
+              );
+            })}
+      </div>
+    </>
+  );
+};
 
 export default Home;
 ```
@@ -65,4 +64,8 @@ export default Home;
 >
 > ![An example of what the product listing might look like](workshop-assets/readme-images/webstore-demo-product-list.jpg)
 
-[▶️ STEP 6](./STEP-6-AUTHENTICATING-USERS.md)
+---
+
+[▶️ STEP 6: Authenticating users](./STEP-6-AUTHENTICATING-USERS.md)
+
+_[⎌ Back to step 4: Retrieving products from the Stripe API](./STEP-4-RETRIEVE-PRODUCTS.md)_

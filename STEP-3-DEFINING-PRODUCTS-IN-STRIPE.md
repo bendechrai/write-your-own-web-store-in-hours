@@ -18,4 +18,8 @@ Let's add a couple of items to your Stripe product catalogue. You can choose wha
 >
 > ![image](workshop-assets/readme-images/stripe-product-create.jpg)
 
-[▶️ STEP 4](./STEP-4-RETRIEVE-PRODUCTS.md)
+---
+
+[▶️ STEP 4: Retrieving products from the Stripe API](./STEP-4-RETRIEVE-PRODUCTS.md)
+
+_[⎌ Back to step 2: Create a new React Project](./STEP-2-NEW-REACT-PROJECT.md)_

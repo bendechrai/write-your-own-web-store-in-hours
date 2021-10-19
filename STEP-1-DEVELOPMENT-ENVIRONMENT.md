@@ -68,5 +68,8 @@ Once complete, you'll see the message `You are now logged into your Netlify acco
 
 💡 Due to the way Gitpod works, you might notice the Netlify login page trying to open in the preview area and fail. If this happens, click on the "Open Site in New Window" button and continue. This step will be complete when you can run `netlify status` in the Gitpod's command terminal and not see `Not logged in. Please log in to see site status.`
 
+---
 
-[▶️ STEP 2](./STEP-2-NEW-REACT-PROJECT.md)
+[▶️ STEP 2: Create a new React Project](./STEP-2-NEW-REACT-PROJECT.md)
+
+_[⎌ Back to step 0: Pre-Workshop Setup](./STEP-0-PRE-WORKSHOP.md)_

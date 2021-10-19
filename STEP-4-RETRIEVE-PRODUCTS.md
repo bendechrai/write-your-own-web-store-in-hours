@@ -17,48 +17,40 @@ npm install stripe @stripe/stripe-js dotenv
 👉💻👈 Create `/netlify/functions/products.js`
 
 ```javascript
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-exports.handler = async function(event, context) {
-
+exports.handler = async function (event, context) {
   // Stripe doesn't give you a list of products with prices,
   // so we'll get all prices with their products. This means
   // products might appear in the results multiple times if
   // they have multiple prices.
   const prices = await stripe.prices.list({
-    expand: ['data.product']
+    expand: ["data.product"],
   });
 
   // Let's transform the prices with products
   //        to a list of products with prices
   products = [];
-  prices.data.map(price => {
-
+  prices.data.map((price) => {
     // Separate product object from price object
     product = price.product;
     delete price.product;
 
     // Is this product in the array already?
-    if(existingProduct = products.find(p => p.id===product.id)) {
-
+    if ((existingProduct = products.find((p) => p.id === product.id))) {
       // YES - add the new price to the existing item
-      existingProduct.prices.push(price)
-
+      existingProduct.prices.push(price);
     } else {
-
       // NO - create new object and add to array
       products.push({ ...product, prices: [price] });
-
     }
-
-  })
+  });
 
   return {
     statusCode: 200,
-    body: JSON.stringify(products)
+    body: JSON.stringify(products),
   };
-
-}
+};
 ```
 
 Now let's define `STRIPE_SECRET_KEY` by creating `/.env`
@@ -77,4 +69,8 @@ To get your secret key, head to the [Developer Section](https://dashboard.stripe
 
 🧪 To test that everything's working as expected, head to http://localhost:8888/.netlify/functions/products, and you should see the JSON response and spot some product names and descriptions in there.
 
-[▶️ STEP 5](./STEP-5-DISPLAY-PRODUCTS.md)
+---
+
+[▶️ STEP 5: Displaying products in React](./STEP-5-DISPLAY-PRODUCTS.md)
+
+_[⎌ Back to step 3: Defining products in Stripe](./STEP-3-DEFINING-PRODUCTS-IN-STRIPE.md)_

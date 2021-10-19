@@ -143,5 +143,8 @@ export default App;
 
 💡 Make this looks much prettier by replacing `/src/App.css` with the file by the same name in `/workshop-assets`.
 
+---
 
-[▶️ STEP 3](./STEP-3-DEFINING-PRODUCTS-IN-STRIPE.md)
+[▶️ STEP 3: Defining products in Stripe](./STEP-3-DEFINING-PRODUCTS-IN-STRIPE.md)
+
+_[⎌ Back to step 1: Setting up your development environment](./STEP-1-DEVELOPMENT-ENVIRONMENT.md)_
