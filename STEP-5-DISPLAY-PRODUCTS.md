@@ -8,6 +8,8 @@ If you're familiar with React already, the next part might be pretty straight fo
 
 But what's it doing? We're going to instruct the Home Page component to connect to the lambda function we just created, retrieve the JSON response of products, and render each of them out. We'll also add a handler for the "Buy Now" buttons.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Replace the contents of `src/pages/home.js` with:
 
 ```javascript
@@ -30,24 +32,25 @@ const Home = () => {
       <p>Welcome to my web store!</p>
       <div className="products">
         {products &&
-          products
-            .filter((product) => product.active)
-            .map((product) => {
-              return (
-                <div className="product" key={product.id}>
-                  <h2>{product.name}</h2>
-                  <p className="img">
-                    <img src={product.images[0]} alt={product.name} />
-                  </p>
-                  <p className="sku">SKU: {product.id}</p>
-                  <p className="description">{product.description}</p>
-                  <p className="price">${(product.prices[0].unit_amount / 100).toFixed(2)}</p>
-                  <p className="buynow">
-                    <button>Buy Now</button>
-                  </p>
-                </div>
-              );
-            })}
+          products.map((product) => {
+            return (
+              <div className="product" key={product.id}>
+                <h2>{product.name}</h2>
+                <p className="img">
+                  <img src={product.images[0]} alt={product.name} />
+                </p>
+                <p className="sku">SKU: {product.id}</p>
+                <p className="description">{product.description}</p>
+                <p className="price">
+                  ${(product.prices[0].unit_amount / 100)
+                    .toFixed(2)}
+                </p>
+                <p className="buynow">
+                  <button>Buy Now</button>
+                </p>
+              </div>
+            );
+          })}
       </div>
     </>
   );
@@ -56,6 +59,8 @@ const Home = () => {
 export default Home;
 ```
 
+💡 Take a minute to look at this code and comapre it to the description of what we're trying to achieve. You should see the request to the lambda function, and the loop that renders the product information.
+
 ![spacer](workshop-assets/readme-images/spacer.png)
 
 🧪 After saving, you should see your homepage automatically update and display the products you added to your Stipe catalogue. If you used the HTML structure in the code above, the CSS file provided with this workshop should even make it all look very pretty...
@@ -63,6 +68,8 @@ export default Home;
 > 📷 **_Screenshot of an example of what the product listing might look like_**
 >
 > ![An example of what the product listing might look like](workshop-assets/readme-images/webstore-demo-product-list.jpg)
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

@@ -23,6 +23,8 @@ This workshop has given you the basics to understand how to use Auth0 Actions to
 
 There are places where error handling could have been added. Just for example, when the `buy` endpoint is called, we don't handle issues where the access token doesn't contain a `stripe_customer_id`. Also, we're not locking API function calls to their expected HTTP Methods. There are many options for improving the resillience of this code, which I'll leave for you to discover.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 ---
 
 _[⎌ Back to step 9: Starting a Stripe Checkout](./STEP-9-START-CHECKOUT.md)_

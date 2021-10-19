@@ -40,15 +40,15 @@ you'll want to go to:
 https://gitpod.io/#github.com/yourname/write-your-own-web-store-in-hours
 ```
 
-and you'll end up with something looking like this:
+If you're prompted to log in, do so with your Github account, and you'll end up with something looking like this:
 
 ![Gitpod Initial View](workshop-assets/readme-images/gitpod-initial-view.jpg)
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
-## ⚙️ Connect to Netlify
+## ⚙️ Install the Netlify CLI
 
-We're not going to be deploying to Netlify, but we do want to use the Netlify developer tools so that the lambda functions we write today work locally.
+We're not going to be deploying to Netlify, but we do want to use the Netlify developer tools so that the lambda functions we write today can be served locally for testing.
 
 👉💻👈 In Gitpod's web-based editor, open the command terminal and install Netlify's command line (CLI) tools
 
@@ -56,17 +56,7 @@ We're not going to be deploying to Netlify, but we do want to use the Netlify de
 npm install netlify-cli -g
 ```
 
-👉💻👈 Log the Netlify CLI in to your Netlify account
-
-```shell
-netlify login
-```
-
-Once complete, you'll see the message `You are now logged into your Netlify account!` in the terminal.
-
-![Successful Netlify Login](workshop-assets/readme-images/netlify-login.jpg)
-
-💡 Due to the way Gitpod works, you might notice the Netlify login page trying to open in the preview area and fail. If this happens, click on the "Open Site in New Window" button and continue. This step will be complete when you can run `netlify status` in the Gitpod's command terminal and not see `Not logged in. Please log in to see site status.`
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

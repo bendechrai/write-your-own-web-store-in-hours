@@ -20,6 +20,8 @@
 
 Actions are one of the extensibility features of Auth0, that allow you to run your own arbitrary JavaScript code when certain events are triggered. We're going to create an Action that will create a new Customer record in your Stripe tenant, and associate it with the currently logged in user.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 In the Auth0 Dashboard, head to [Actions > Library](https://manage.auth0.com/#/actions/library) in the left menu. From there, click "Build Custom".
 
 Have a quick look at the Triggers. There's one for post-registration, that sounds like a good place for this. After a user registers, run our action.
@@ -27,6 +29,8 @@ Have a quick look at the Triggers. There's one for post-registration, that sound
 However, for two main reasons, we're going to use the "Post Login" trigger. Firstly, we have a user already that hasn't had this action run against them. We want to make sure their user profile is still augmented.
 
 Secondly, and similarly, if something goes wrong and we can't connect to Stripe, the process could fail. Using th ePost Login trigger means a user can log out and back in to try again.
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 👉💻👈 Name the Action (e.g. "Link User to Stripe") and make sure Post Login is selected
 
@@ -38,7 +42,7 @@ Secondly, and similarly, if something goes wrong and we can't connect to Stripe,
 
 ## Install the Stripe SDK
 
-👉💻👈 Did you know that you can install almost any NPM module for use in Actions? Pretty sweet. Let's install the Stripe SDK.
+👉💻👈 Did you know that you can install almost any NPM module for use in Actions? Pretty sweet. Let's install the Stripe SDK within the Actions interface:
 
 > 📷 **_Installing Modules for Actions_**
 >
@@ -99,17 +103,19 @@ The code has now been deployed, but needs to be added to the Action Flow...
 
 👉💻👈 Now log out and back in, and you'll be able to see a [new customer in the Stripe dashboard](https://dashboard.stripe.com/test/customers).
 
-![spacer](workshop-assets/readme-images/spacer.png)
-
 > 📷 **_The new Stripe Customer_**
 >
 > ![The new Stripe Customer](workshop-assets/readme-images/stripe-new-customer.jpg)
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 And if you drill into the new Stripe Customer and the Auth0 User, you'll see the linking data is all present and correct.
 
 > 📷 **_Comparing the Stripe Customer and Auth0 User_**
 >
 > ![Comparing the Stripe Customer and Auth0 User](workshop-assets/readme-images/user-customer-comparison.jpg)
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

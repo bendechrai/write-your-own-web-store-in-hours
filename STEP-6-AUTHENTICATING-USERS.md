@@ -22,7 +22,9 @@ In the Auth0 dashboard, [create a new Application](https://manage.auth0.com/#/ap
 
 Once the application is set up in your Auth0 Dashboard, switch to the **Settings** tab. We need to tell Auth0 some things about our local development environment in order to make this work.
 
-Add your local development URL to the **Allowed Callback URLs**, **Allowed Logout URLs**, and **Allowed web Origins** fields, and then scroll to the bottom of the page and **Save Changes** Assuming your local web store is running at http://localhost:8888, add this
+Add your local development URL to the **Allowed Callback URLs**, **Allowed Logout URLs**, and **Allowed web Origins** fields, and then scroll to the bottom of the page and **Save Changes**.
+
+Your local development URL will be the URL in the browser that we've been working with so far. Assuming you're in Gitpod, it will probably look something like `https://8888-foo-bar-00000000.ws-usXX.gitpod.io`.
 
 > 📷 **_The URLs we need to set in the Auth0 Dashboard_**
 >
@@ -36,11 +38,15 @@ Essentially, this is telling Auth0 which web applications it's permitted to talk
 
 Auth0 provides a very easy to use SDK for many programming languages and tech stacks. The React one will make light work of integrating everything.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Grab the latest SDK
 
 ```
 npm install @auth0/auth0-react
 ```
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 👉💻👈 Edit `src/index.js` to wrap the entire application with the Auth0 Provider, and insert the following `import` directive, and wrap the `<App>` element as shown:
 
@@ -54,7 +60,9 @@ import { Auth0Provider } from "@auth0/auth0-react";
 </Auth0Provider>
 ```
 
-💡 But what are those two values in there? Switch back to the Settings tab in the Auth0 Dashboard, and you'll find the **DOMAIN** and **CLIENT ID** up near the top.
+![spacer](workshop-assets/readme-images/spacer.png)
+
+👉💻👈 But what are those two values in there? Switch back to the Settings tab in the Auth0 Dashboard, and you'll find the **DOMAIN** and **CLIENT ID** up near the top.
 
 These are not sensitive values, but in an ideal world we'd split these out into a separate configuration file that we can exclude from the code repository. In the interest of not complicating this workshop any further, that's left as an exercise for the reader for another time 😁
 
@@ -73,6 +81,8 @@ export default withAuthenticationRequired(Home);
 ```
 
 But, that's not what we want to do today. Instead, we want to detect the current user in the Home component. There are a couple of ways we can do this, but as it would make sense to turn the "Buy Now" button into a component that determines what it should do based on the user's logged in status, we'll use the `useAuth()` hook.
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 👉💻👈 Edit `/src/pages/home.js` and let's create a new component to contain the Buy Now button. Add the `import` directive and define the new component at the top, and replace the button in the main output with this new component:
 
@@ -101,6 +111,8 @@ const BuyNowButton = ({ product }) => {
 What we're doing here is to wait until the Auth0 provider has finished loading, at which point we know if there's a logged in user. If the user is logged in, we show the "Buy Now" button, otherwise we show the "Log In To Purchase" button.
 
 Let's do something similar to add a Logout button to the menu if the user is logged in.
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 👉💻👈 Edit `/src/components/layout.js`. We need to import `useAuth0`, extract some methods from that, and then optionally display a logout button in the menu. To make it easier for you, here's what the final file should look like:
 
@@ -141,9 +153,15 @@ const Layout = ({ children }) => {
 export default Layout;
 ```
 
-🧪 Check out your local web store now - the buttons should have updated. They did? Well click it and create an account! When that's done, you'll see the buttons read "Buy Now" again.
+![spacer](workshop-assets/readme-images/spacer.png)
 
-💡 Note that the CSS file should style the Logout link very similarly to the menu item already 👍
+🧪 Check out your local web store now - the buttons should have updated. They did? Well click it and create an account! When that's done, you'll see the buttons read "Buy Now" again, and the logout button appear.
+
+⚠ If you're previewing the React app inside VS Code inside Gitpod, logging in might prompt you to open the site in a new tab, depending on your browser. Go ahead and do that 👍
+
+💡 If you updated the CSS file in Step 2, the Logout link should be styled very similarly to the menu item already 👍
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

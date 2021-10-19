@@ -34,7 +34,7 @@ Okay - here's the code I used:
 ```javascript
 exports.onExecutePostLogin = async (event, api) => {
   if (event.user.app_metadata.stripe_customer_id) {
-    api.accessToken.setCustomClaim("http://localhost:8888/stripe_customer_id", event.user.app_metadata.stripe_customer_id);
+    api.accessToken.setCustomClaim("https://8888-foo-bar-00000000.ws-usXX.gitpod.io/stripe_customer_id", event.user.app_metadata.stripe_customer_id);
   }
 };
 ```
@@ -49,6 +49,8 @@ For security reasons, access tokens define a list of "audiences" or URLs for who
 
 So we need to tell Auth0 about our API, so that it can be included in the "audience" list.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Head to [Applications > APIs](https://manage.auth0.com/#/apis) in the Auth0 dashboard, and create a new API.
 
 > 📷 **_New API definition in Auth0_**
@@ -59,10 +61,17 @@ There are a lot of powerful configuration options here, but for the purposes of 
 
 Now that our API is known by Auth0, we need the login process that's kicked off from our React app to specify our API as an intended audience.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Edit `/src/index.js` and add the `audience` attribute to the `Auth0Provider` element:
 
 ```javascript
-<Auth0Provider domain="YOUR_AUTH0_DOMAIN" clientId="YOUR_AUTH0_CLIENT_ID" audience="http://localhost:8888" redirectUri={window.location.origin}>
+<Auth0Provider
+  domain="YOUR_AUTH0_DOMAIN"
+  clientId="YOUR_AUTH0_CLIENT_ID"
+  audience="https://8888-foo-bar-00000000.ws-usXX.gitpod.io"
+  redirectUri={window.location.origin}
+>
   <App />
 </Auth0Provider>
 ```
@@ -74,6 +83,8 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 > 📷 **_Finding the Stripe Customer ID in the Auth0 Access Token_**
 >
 > ![Finding the Stripe Customer ID in the Auth0 Access Token](workshop-assets/readme-images/test-token-has-stripe-id.jpg)
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

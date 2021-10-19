@@ -8,6 +8,8 @@ Let's add a couple of items to your Stripe product catalogue. You can choose wha
 
 > If you source your own images, ensuring they're 400px by 400px will make this workshop's suggested CSS work nicely. The images I've provided have been pre-cropped to these dimensions for you already.
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 From the [Product Creation Page](https://dashboard.stripe.com/test/products/create) in your Stripe Dashboard, make sure to add at least two products:
 
 - Provide the optional description - we'll display this in our product details page later.
@@ -17,6 +19,8 @@ Let's add a couple of items to your Stripe product catalogue. You can choose wha
 > 📷 **_Screenshot of an example product being added to Stripe_**
 >
 > ![image](workshop-assets/readme-images/stripe-product-create.jpg)
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

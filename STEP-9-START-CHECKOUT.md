@@ -16,7 +16,11 @@ Stripe Checkout creates a secure, Stripe-hosted payment page that lets you colle
 npm install @serverless-jwt/netlify
 ```
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Create `/netlify/functions/buy.js`
+
+💡 There are three placeholder URLs in here - make sure you change `8888-foo-bar-00000000.ws-usXX.gitpod.io` to your development domain.
 
 ```javascript
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -29,15 +33,15 @@ const verifyJwt = NetlifyJwtVerifier({
 
 exports.handler = verifyJwt(async function (event, context) {
   // Get Stripe Customer ID from Access Token
-  const stripeCustomerId = context.identityContext.claims["http://localhost:8888/stripe_customer_id"];
+  const stripeCustomerId = context.identityContext.claims["https://8888-foo-bar-00000000.ws-usXX.gitpod.io/stripe_customer_id"];
 
   // Decode the payload
   const payload = JSON.parse(event.body);
 
   // Chreate a new Stripe Checkout Session
   const session = await stripe.checkout.sessions.create({
-    success_url: "http://localhost:8888/success",
-    cancel_url: "http://localhost:8888/",
+    success_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/success",
+    cancel_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/",
     payment_method_types: ["card"],
     customer: stripeCustomerId,
     line_items: [
@@ -56,14 +60,18 @@ exports.handler = verifyJwt(async function (event, context) {
 });
 ```
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 👉💻👈 Add the two new environment variables to `/.env`
 
 ```
 AUTH0_ISSUER=https://xxxxxxxxxx.us.auth0.com/
-AUTH0_AUDIENCE=http://localhost:8888
+AUTH0_AUDIENCE=https://8888-foo-bar-00000000.ws-usXX.gitpod.io
 ```
 
 ❗ NOTE: Make sure you have a trailing slash for `AUTH0_ISSUER`!
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 👉💻👈 Restart `netlify dev` in order to load in the environment varliables and register the new function.
 
@@ -101,6 +109,8 @@ const buy = async () => {
     });
 };
 ```
+
+![spacer](workshop-assets/readme-images/spacer.png)
 
 ---
 

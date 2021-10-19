@@ -41,6 +41,8 @@ This shouldn't take long, and having these accounts ready means the start of the
 - [x] Check your ✉️ email for a verification link
 - [x] Complete or skip the 🙋 profile personalization questions
 
+![spacer](workshop-assets/readme-images/spacer.png)
+
 ---
 
 [▶️ STEP 1: Setting up your development environment](./STEP-1-DEVELOPMENT-ENVIRONMENT.md)
