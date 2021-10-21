@@ -144,8 +144,12 @@ const App = () => {
           <Route path="/success">
             <Success />
           </Route>
-          <Route path="/">![spacer](workshop-assets/readme-images/spacer.png)
-
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 };
 
