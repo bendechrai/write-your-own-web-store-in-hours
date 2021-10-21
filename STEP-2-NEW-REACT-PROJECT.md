@@ -7,7 +7,7 @@
 👉💻👈 Use `npx` to deploy a default react app
 
 ```shell
-npx create-react-app
+npx create-react-app webstore
 ```
 
 👉💻👈 Start the Netlify Development Server
