@@ -24,10 +24,13 @@ npm install stripe @stripe/stripe-js dotenv
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async function (event, context) {
+
   // Stripe doesn't give you a list of products with prices,
   // so we'll get all prices with their products. This means
   // products might appear in the results multiple times if
   // they have multiple prices.
+  //
+  // See Stripe docs: https://stripe.com/docs/api/prices/list
   const prices = await stripe.prices.list({
     expand: ["data.product"],
   });
