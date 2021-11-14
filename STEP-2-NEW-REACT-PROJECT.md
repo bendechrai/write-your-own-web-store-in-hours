@@ -128,7 +128,7 @@ export default Success;
 
 ```javascript
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/layout";
 import Home from "./pages/home";
@@ -140,14 +140,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Layout>
-        <Switch>
-          <Route path="/success">
-            <Success />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/success" element={<Success />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </Layout>
     </BrowserRouter>
   );
