@@ -38,7 +38,7 @@ exports.handler = verifyJwt(async function (event, context) {
   // Decode the payload
   const payload = JSON.parse(event.body);
 
-  // Chreate a new Stripe Checkout Session
+  // Create a new Stripe Checkout Session
   const session = await stripe.checkout.sessions.create({
     success_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/success",
     cancel_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/",

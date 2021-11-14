@@ -63,7 +63,7 @@ export default Home;
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
-🧪 After saving, you should see your homepage automatically update and display the products you added to your Stipe catalogue. If you used the HTML structure in the code above, the CSS file provided with this workshop should even make it all look very pretty...
+🧪 After saving, you should see your homepage automatically update and display the products you added to your Stripe catalogue. If you used the HTML structure in the code above, the CSS file provided with this workshop should even make it all look very pretty...
 
 > 📷 **_Screenshot of an example of what the product listing might look like_**
 >
