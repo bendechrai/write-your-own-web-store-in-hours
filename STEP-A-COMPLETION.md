@@ -25,6 +25,48 @@ There are places where error handling could have been added. Just for example, w
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
+# Bonus Content: JWT Viewer
+
+If you'd like to add a JWT viewer to this app, so you can see what's coming back from Auth0 in both the ID Token and the Access Token,
+
+```javascript
+import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { decode } from "js-base64";
+
+const Profile = () => {
+  const { isLoading, user, getAccessTokenSilently } = useAuth0();
+  const [accessToken, setAccessToken] = useState();
+
+  useEffect(() => {
+    getAccessTokenSilently().then((token) => {
+      const [header, payload, signature] = token.split(".");
+      setAccessToken(JSON.parse(decode(payload)));
+    });
+  }, [setAccessToken]);
+
+  if (!isLoading)
+    return (
+      <>
+        <h2>ID Token</h2>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+        <h2>Access Token</h2>
+        <pre>{JSON.stringify(accessToken, null, 2)}</pre>
+      </>
+    );
+
+  return <p>Loading...</p>;
+};
+
+export default Profile;
+```
+
+You'll also need to:
+
+```shell
+npm i js-base64
+```
+
 ---
 
 _[⎌ Back to step 9: Starting a Stripe Checkout](./STEP-9-START-CHECKOUT.md)_
