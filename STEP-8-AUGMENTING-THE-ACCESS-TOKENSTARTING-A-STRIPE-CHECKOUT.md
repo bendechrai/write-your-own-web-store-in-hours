@@ -69,8 +69,10 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 <Auth0Provider
   domain="YOUR_AUTH0_DOMAIN"
   clientId="YOUR_AUTH0_CLIENT_ID"
-  audience="https://8888-foo-bar-00000000.ws-usXX.gitpod.io"
-  redirectUri={window.location.origin}
+  authorizationParams={{
+    redirect_uri: window.location.origin,
+    audience: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io",
+  }}
 >
   <App />
 </Auth0Provider>
