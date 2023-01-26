@@ -28,7 +28,7 @@ Have a quick look at the Triggers. There's one for post-registration, that sound
 
 However, for two main reasons, we're going to use the "Post Login" trigger. Firstly, we have a user already that hasn't had this action run against them. We want to make sure their user profile is still augmented.
 
-Secondly, and similarly, if something goes wrong and we can't connect to Stripe, the process could fail. Using th ePost Login trigger means a user can log out and back in to try again.
+Secondly, and similarly, if something goes wrong and we can't connect to Stripe, the process could fail. Using the Post Login trigger means a user can log out and back in to try again.
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
