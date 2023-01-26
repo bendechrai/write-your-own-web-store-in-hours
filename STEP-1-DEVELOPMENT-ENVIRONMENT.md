@@ -40,7 +40,7 @@ you'll want to go to:
 https://gitpod.io/#github.com/yourname/write-your-own-web-store-in-hours
 ```
 
-If you're prompted to log in, do so with your Github account, and you'll end up with something looking like this:
+If you're prompted to log in, do so with your Github account. You might be prompted to choose your preferred editor (this workshop assumes you're using VS Code in the browser), and then you'll end up with something looking like this:
 
 ![Gitpod Initial View](workshop-assets/readme-images/gitpod-initial-view.jpg)
 
