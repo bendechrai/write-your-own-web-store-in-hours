@@ -22,6 +22,19 @@ Let's add a couple of items to your Stripe product catalogue. You can choose wha
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
+## Ben's Really Terrible Product Descriptions
+
+(Feel free to use these yourself, if you like 🤣)
+
+> **Now Hear This**
+>
+> These headphones have been specially designed to work on most human heads. Strategically positioned over your ears, the speakers will let you hear things. As seen on some Twitch streamers' Twitch streams.
+>
+> **Hopping Shoe**
+>
+> This show is red, which means you'll hop really fast. We don't sell hopping shoes for the right foot. Sorry.
+
+
 ---
 
 [▶️ STEP 4: Retrieving products from the Stripe API](./STEP-4-RETRIEVE-PRODUCTS.md)
