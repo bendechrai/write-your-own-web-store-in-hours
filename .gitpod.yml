@@ -1,5 +1,0 @@
-image:
-  file: Dockerfile
-tasks:
-  - name: Install NPM modules for all completed step folders
-    init: for step in step?-complete; do cd $step; npm i; cd ..; done
