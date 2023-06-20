@@ -56,8 +56,8 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 ```javascript
 <Auth0Provider
-  domain="YOUR_AUTH0_DOMAIN"
-  clientId="YOUR_AUTH0_CLIENT_ID" 
+  domain={process.env.REACT_APP_AUTH0_DOMAIN}
+  clientId={process.env.REACT_APP_AUTH0_CLIENTID} 
   authorizationParams={{
     redirect_uri: window.location.origin
   }}>
@@ -67,9 +67,17 @@ import { Auth0Provider } from "@auth0/auth0-react";
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
-👉💻👈 But what are those two values in there? Switch back to the Settings tab in the Auth0 Dashboard, and you'll find the **DOMAIN** and **CLIENT ID** up near the top.
+👉💻👈 We just need to define the two new environment variables in `/.env`
 
-These are not sensitive values, but in an ideal world we'd split these out into a separate configuration file that we can exclude from the code repository. In the interest of not complicating this workshop any further, that's left as an exercise for the reader for another time 😁
+Switch back to the Settings tab in the Auth0 Dashboard, and you'll find the **DOMAIN** and **CLIENT ID** up near the top.
+
+```
+REACT_APP_AUTH0_DOMAIN=dev-abcdefghijklmnop.cc.auth0.com
+REACT_APP_AUTH0_CLIENTID=12345678901234567890123456789012
+```
+
+⚠ Don't forget to restart `netlify dev` to load these variables into the environment.
+
 
 > 📷 **_The Basic Settings for the application definition on the Auth0 dashboard_**
 >
