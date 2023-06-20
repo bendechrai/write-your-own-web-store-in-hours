@@ -76,7 +76,7 @@ REACT_APP_AUTH0_DOMAIN=dev-abcdefghijklmnop.cc.auth0.com
 REACT_APP_AUTH0_CLIENTID=12345678901234567890123456789012
 ```
 
-⚠ Don't forget to restart `netlify dev` to load these variables into the environment.
+👉💻👈 Don't forget to restart `netlify dev` to load these variables into the environment.
 
 
 > 📷 **_The Basic Settings for the application definition on the Auth0 dashboard_**
