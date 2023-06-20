@@ -27,13 +27,13 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const { NetlifyJwtVerifier } = require("@serverless-jwt/netlify");
 
 const verifyJwt = NetlifyJwtVerifier({
-  issuer: process.env.AUTH0_ISSUER,
-  audience: process.env.AUTH0_AUDIENCE,
+  issuer: "https://" + process.env.REACT_APP_AUTH0_DOMAIN + "/",
+  audience: process.env.REACT_APP_AUTH0_AUDIENCE,
 });
 
 exports.handler = verifyJwt(async function (event, context) {
   // Get Stripe Customer ID from Access Token
-  const stripeCustomerId = context.identityContext.claims["https://8888-foo-bar-00000000.ws-usXX.gitpod.io/stripe_customer_id"];
+  const stripeCustomerId = context.identityContext.claims[process.env.REACT_APP_AUTH0_AUDIENCE + "/stripe_customer_id"];
 
   // Decode the payload
   const payload = JSON.parse(event.body);
@@ -42,8 +42,8 @@ exports.handler = verifyJwt(async function (event, context) {
   //
   // See Stripe docs: https://stripe.com/docs/api/checkout/sessions/create
   const session = await stripe.checkout.sessions.create({
-    success_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/success",
-    cancel_url: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io/",
+    success_url: process.env.REACT_APP_AUTH0_AUDIENCE + "/success",
+    cancel_url: process.env.REACT_APP_AUTH0_AUDIENCE + "/",
     payment_method_types: ["card"],
     customer: stripeCustomerId,
     line_items: [
@@ -60,15 +60,6 @@ exports.handler = verifyJwt(async function (event, context) {
     body: JSON.stringify(session),
   };
 });
-```
-
-![spacer](workshop-assets/readme-images/spacer.png)
-
-👉💻👈 Add the two new environment variables to `/.env`
-
-```
-AUTH0_ISSUER=https://xxxxxxxxxx.us.auth0.com/
-AUTH0_AUDIENCE=https://8888-foo-bar-00000000.ws-usXX.gitpod.io
 ```
 
 ❗ NOTE: Make sure you have a trailing slash for `AUTH0_ISSUER`!
