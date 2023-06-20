@@ -67,16 +67,31 @@ Now that our API is known by Auth0, we need the login process that's kicked off 
 
 ```javascript
 <Auth0Provider
-  domain="YOUR_AUTH0_DOMAIN"
-  clientId="YOUR_AUTH0_CLIENT_ID"
+  domain={process.env.REACT_APP_AUTH0_DOMAIN}
+  clientId={process.env.REACT_APP_AUTH0_CLIENTID}
   authorizationParams={{
     redirect_uri: window.location.origin,
-    audience: "https://8888-foo-bar-00000000.ws-usXX.gitpod.io",
+    audience: process.env.REACT_APP_AUTH0_AUDIENCE,
   }}
 >
   <App />
 </Auth0Provider>
 ```
+
+
+![spacer](workshop-assets/readme-images/spacer.png)
+
+
+👉💻👈 And of course we need to add this environment variable in `/.env`
+
+```
+REACT_APP_AUTH0_AUDIENCE=https://8888-foo-bar-00000000.ws-usXX.gitpod.io
+```
+
+This is the URL of your web app.
+
+👉💻👈 Don't forget to restart `netlify dev` again!
+
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
