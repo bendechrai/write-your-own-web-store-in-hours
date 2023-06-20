@@ -38,9 +38,9 @@ This shouldn't take long, and having these accounts ready means the start of the
 > Gitpod is an open source developer platform that allows you to easily spin-up fresh dev environments for any task.
 
 - [x] Sign in to [GitPod](https://gitpod.io/) with your GitHub account 👉
-- Choose to "Continue with 10 hours per month"
-- Choose an edtor (this workshp assumes you're using VS Code in the Browser)
-- Tell GitPod more about yourself
+- [x] Choose to "Continue with 10 hours per month"
+- [x] Choose an edtor (this workshp assumes you're using VS Code in the Browser)
+- [x] Tell GitPod more about yourself
 
 Once you see the "No Workspaces" page, you can stop. We'll create a workspace in the next step.
 
