@@ -20,7 +20,7 @@ This shouldn't take long, and having these accounts ready means the start of the
 
 ## Auth0 Account
 
-> Auth0 is an easy to implement, adaptable authentication and authorization platform. Basically, they make your login box awesome. When you sign up, you'll get a 22-day left trial to experiment with all the features. After that, you'll revert to the free-tier Starter plan.
+> Auth0 is an easy to implement, adaptable authentication and authorization platform. Basically, they make your login box awesome. When you sign up, you'll get a 22-day trial to experiment with all the features. After that, you'll revert to the free-tier Starter plan.
 
 - [x] Sign up for a [free Auth0 account](https://ben.sc/auth0-signup) 👉
 - [x] Check your ✉️ email for a verification link
