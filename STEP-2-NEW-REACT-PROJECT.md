@@ -2,6 +2,23 @@
 
 ![spacer](workshop-assets/readme-images/spacer.png)
 
+## Shorter Workshops
+
+💡 Are you taking part in a shorter workshop? The following will speed up the process by completing step 2 for you:
+
+```shell
+cp -a step2-complete/ webstore
+cd webstore
+npm i
+netlify dev
+```
+
+Taking the shortcut? Go to [▶️ STEP 3: Defining products in Stripe](./STEP-3-DEFINING-PRODUCTS-IN-STRIPE.md)
+
+Not taking the shortcut? Continue below ⬇️
+
+![spacer](workshop-assets/readme-images/spacer.png)
+
 ## 🪄 Create a default React App
 
 👉💻👈 Use `npx` to deploy a default react app
